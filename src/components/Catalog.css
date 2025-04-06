@@ -1,0 +1,306 @@
+/* Основные стили */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+.catalog-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Шапка каталога */
+.catalog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.catalog-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0;
+}
+
+/* Элементы управления */
+.controls {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.view-toggle {
+  display: flex;
+  gap: 8px;
+}
+
+.view-toggle button {
+  background: none;
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.view-toggle button.active {
+  background: #3498db;
+  color: white;
+  border-color: #3498db;
+}
+
+.sorting {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sorting label {
+  font-weight: 500;
+  color: #555;
+}
+
+.sorting select {
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  background-color: white;
+  cursor: pointer;
+}
+
+/* Основное содержимое */
+.catalog-content {
+  display: flex;
+  gap: 20px;
+}
+
+/* Боковая панель с фильтрами */
+.filters-sidebar {
+  width: 20%;
+  min-width: 220px;
+  flex-shrink: 0;
+  padding-right: 15px;
+}
+
+/* Сетка игр */
+.games-grid {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+  width: 80%;
+}
+
+.game-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.game-card .game-image {
+  height: 350px;
+  overflow: hidden;
+}
+
+.game-card .game-image img {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease;
+  object-fit:contain;
+}
+
+.game-card:hover .game-image img {
+  transform: scale(1.03);
+}
+
+.game-card .game-info {
+  padding: 15px;
+}
+
+/* Карточка игры */
+.game-card {
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+}
+
+.game-image {
+  overflow: hidden;
+}
+
+.game-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.5s ease;
+}
+
+.game-card:hover .game-image img {
+  transform: scale(1.03);
+}
+
+.game-info {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.game-info h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  color: #2c3e50;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.game-specs-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 12px 0;
+  padding: 0;
+}
+
+.spec-item {
+  text-align: center;
+  flex: 1;
+}
+
+.spec-label {
+  font-size: 15px;
+  color: #555;
+  font-weight: 500;
+  display: block;
+}
+
+.spec-value {
+  font-size: 15px;
+  font-weight: 700;
+  color: #3498db;
+  display: block;
+  margin-top: 3px;
+}
+
+/* Краткое описание */
+.short-description {
+  font-size: 15px;
+  color: #666;
+  margin: 0 0 15px 0;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex-grow: 1;
+}
+
+/* Футер карточки */
+.game-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.price {
+  font-weight: 700;
+  font-size: 20px;
+  color: #2c3e50;
+}
+
+.details-btn {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 500;
+  transition: background 0.3s ease;
+  text-decoration: none; /* Добавляем это свойство */
+
+}
+
+.details-btn:hover {
+  background: #2980b9;
+}
+
+/* Адаптивность */
+@media (max-width: 576px) {
+  .game-image {
+    height: 140px;
+  }
+  
+  .game-info {
+    padding: 12px;
+  }
+  
+  .game-specs-row {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .spec-item {
+    flex: 0 0 calc(50% - 4px);
+  }
+  
+  .short-description {
+    -webkit-line-clamp: 2;
+  }
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+  .games-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 992px) {
+  .catalog-content {
+    flex-direction: column;
+  }
+  
+  .filters-sidebar {
+    width: 100%;
+    padding-right: 0;
+    margin-bottom: 20px;
+  }
+  
+  .games-grid {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .games-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 15px;
+  }
+  
+  .game-card .game-image {
+    height: 120px;
+  }
+  
+  .game-info {
+    padding: 10px;
+  }
+  
+  .game-info h3 {
+    font-size: 14px;
+  }
+}

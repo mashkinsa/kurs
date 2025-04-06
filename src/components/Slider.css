@@ -1,0 +1,60 @@
+.swiper {
+    width: 100%;
+    height: 50%;
+  }
+  
+  .swiper-slide {
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+    user-select: none;
+  }
+  
+  .swiper-slide-active {
+    opacity: 1 !important;
+  }
+  
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit:contain;
+    border-radius: 10px;
+    pointer-events: none; /* Отключает события мыши */
+  }
+
+  
+.swiper-button-next,
+.swiper-button-prev {
+  color: #2f00ff; /* Цвет кнопок */
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.swiper-pagination-bullet {
+  background-color: #0056b3; /* Цвет пагинации */
+}
+
+.swiper-container {
+  height: 100px; /* Высота слайдера */
+  position: relative; 
+  width: 100%; 
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.swiper-slide {
+  width: 100%;
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+}
+
+.swiper-slide img {
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+}
+
+.swiper-slide:not(.swiper-slide-active) {
+  opacity: 0.5; /* Затемнение неактивных слайдов */
+}
