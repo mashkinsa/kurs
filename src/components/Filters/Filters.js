@@ -2,48 +2,6 @@
 import React, { useState } from 'react';
 import './Filters.css';
 
-// Вспомогательные функции для фильтрации
-export const getTimeDisplay = (game) => {
-  return game.specs.time.max 
-    ? `${game.specs.time.min}-${game.specs.time.max} мин`
-    : `от ${game.specs.time.min} мин`;
-};
-
-export const filterGames = (games, filters) => {
-    return games.filter(game => {
-      // Фильтрация по цене
-      if (game.specs.price < filters.price[0] || game.specs.price > filters.price[1]) {
-        return false;
-      }
-      
-      // Фильтрация по возрасту
-      if (game.specs.age.min > filters.age[1] || 
-          (game.specs.age.max !== null && game.specs.age.max < filters.age[0])) {
-        return false;
-      }
-      
-      // Фильтрация по времени игры
-      if (game.specs.time.min > filters.time[1] || 
-          (game.specs.time.max !== null && game.specs.time.max < filters.time[0])) {
-        return false;
-      }
-      
-      // Фильтрация по игрокам
-      if (game.specs.players.min > filters.players[1] || 
-          game.specs.players.max < filters.players[0]) {
-        return false;
-      }
-      
-      // Фильтрация по категориям (исправленная логика)
-      if (filters.categories.length > 0) {
-        // Игра должна содержать ВСЕ выбранные категории
-        return filters.categories.every(cat => game.categories.includes(cat));
-      }
-      
-      return true;
-    });
-  };
-
 // Константы для фильтров
 const FILTER_RANGES = {
   price: { min: 0, max: 9999 },
@@ -53,7 +11,7 @@ const FILTER_RANGES = {
 };
 
 const ALL_CATEGORIES = [
-  'детские', 'семейные', 'карточные', 'на компанию', 
+  'детские', 'семейные', 'карточные', 'для компании', 
   'стратегические', 'экономические', 'приключенческие'
 ];
 
@@ -78,6 +36,19 @@ const Filters = ({ onFilterChange }) => {
   };
 
   const handleRangeChange = (name, values) => {
+    // Добавляем проверку, чтобы ползунки не пересекались
+    const [min, max] = values;
+    const [currentMin, currentMax] = filters[name];
+    
+    // Если двигаем левый ползунок - не даем ему превысить правый
+    if (min !== currentMin && min > currentMax) {
+      values = [currentMax, currentMax];
+    } 
+    // Если двигаем правый ползунок - не даем ему быть меньше левого
+    else if (max !== currentMax && max < currentMin) {
+      values = [currentMin, currentMin];
+    }
+    
     handleFilterChange({ ...filters, [name]: values });
   };
 

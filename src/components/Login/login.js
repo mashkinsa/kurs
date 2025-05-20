@@ -41,7 +41,7 @@ const Login = () => {
         </button>
       </form>
       <p>
-        Нет аккаунта? <Link to="/register">Зарегистрируйтесь</Link>
+        Нет аккаунта? <Link to="/registration">Зарегистрируйтесь</Link>
       </p>
     </div>
   );

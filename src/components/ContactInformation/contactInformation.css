@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+.contact-container{
+    max-width: 1170px;
+    display: flex;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    margin: 0 auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    justify-content: space-between;
+}
+
+.contact-class{
+    font-size: 14px;
+    color:rgb(0, 0, 0);
+    transition: 0.4s ease;
+    opacity: 0.8;
+    text-decoration: none;
+}
+.contact-class:last-child{
+    margin-left: 0;
+    margin-right: 0;
+}
+.contact-class:hover{
+    color:rgb(112, 112, 112);
+    opacity: 1;
+}

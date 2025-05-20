@@ -123,6 +123,10 @@
     gap: 10px;
   }
   
+  .category-item {
+    text-align: left;
+  }
+
   .category {
     display: flex;
     align-items: center;
@@ -171,16 +175,26 @@
     padding: 10px;
     margin-top: 10px;
     background: #f8f9fa;
+    background-color: #007bff;
     border: 1px solid #e0e0e0;
     border-radius: 6px;
     font-weight: 600;
-    color: #7f8c8d;
+    color: #ffffff;
     cursor: pointer;
     transition: all 0.2s;
   }
   
   .reset-btn:hover {
-    background: #e74c3c;
-    color: white;
-    border-color: #e74c3c;
+    background-color: #0056b3;
+  }
+  .range-input input[type="range"]:first-child::-webkit-slider-thumb {
+    z-index: 3;
+  }
+  
+  .range-input input[type="range"]:last-child::-webkit-slider-thumb {
+    z-index: 2;
+  }
+  
+  .range-input input[type="range"]:active::-webkit-slider-thumb {
+    z-index: 4 !important;
   }
